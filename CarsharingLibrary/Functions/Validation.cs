@@ -4,16 +4,16 @@ using System.Text.RegularExpressions;
 
 namespace CarsharingLibrary.Functions
 {
-    public static class Validation
+    public static partial class Validation
     {
-        private static readonly Regex EmailRegex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.Compiled);
+        private static readonly Regex EmailRegex = EmailRegularExpressioin();
 
         public static bool ValidEmail(string email)
         {
             return EmailRegex.IsMatch(email);
         }
 
-        private static readonly Regex PhoneRegex = new Regex(@"^(\+7|8)[\s-]?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$", RegexOptions.Compiled);
+        private static readonly Regex PhoneRegex = PhoneRegularExopression();
 
         public static bool ValidPhone(string phone)
         {
@@ -22,13 +22,16 @@ namespace CarsharingLibrary.Functions
 
         public static string GetHashString(string password)
         {
-            using (var sha256 = SHA256.Create())
-            {
-                var bytes = Encoding.UTF8.GetBytes(password);
-                var hashBytes = sha256.ComputeHash(bytes);
-                return string.Concat(hashBytes.Select(b => b.ToString("x2")));
-            }
+            var bytes = Encoding.UTF8.GetBytes(password);
+            var hashBytes = SHA256.HashData(bytes);
+            return string.Concat(hashBytes.Select(b => b.ToString("x2")));
         }
+
+        [GeneratedRegex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.Compiled)]
+        private static partial Regex EmailRegularExpressioin();
+
+        [GeneratedRegex(@"^(\+7|8)[\s-]?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$", RegexOptions.Compiled)]
+        private static partial Regex PhoneRegularExopression();
     }
 }
 
