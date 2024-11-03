@@ -19,4 +19,9 @@
     <ProjectReference Include="..\CarsharingLibrary\CarsharingLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Windows\" />
+    <Folder Include="Pages\" />
+  </ItemGroup>
+
 </Project>
