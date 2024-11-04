@@ -9,7 +9,7 @@
       Title="Orders">
 
     <Grid>
-        <DataGrid x:Name="Orders" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid x:Name="OrdersModel" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="Уникальный номер" Binding="{Binding OrderId}"></DataGridTextColumn>
                 <DataGridTextColumn Width="*" Header="Номер клиента" Binding="{Binding UserId}"></DataGridTextColumn>

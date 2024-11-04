@@ -12,7 +12,7 @@ namespace CarsharingProject.Windows.Admin
         public Admin()
         {
             InitializeComponent();
-            MainFrame.Navigate(new Pages.Stations());
+            MainFrame.Navigate(new Pages.StationPage());
             Manager.MainFrame = MainFrame;
         }
 
@@ -30,6 +30,31 @@ namespace CarsharingProject.Windows.Admin
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void Stations_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.StationPage());
+        }
+
+        private void Cars_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Orders_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Clients_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

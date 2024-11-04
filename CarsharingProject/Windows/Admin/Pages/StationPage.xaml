@@ -1,0 +1,57 @@
+﻿<Page x:Class="CarsharingProject.Windows.Admin.Pages.StationPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarsharingProject.Windows.Admin.Pages"
+        mc:Ignorable="d"
+        Title="StationPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button x:Name="AddStation"
+                    Click="AddStation_Click"
+                    Content="Добавить" 
+                    Margin="0 0 30 0" />
+            <Button x:Name="DeleteStation"
+                    Click="DeleteStation_Click"
+                    Content="Удалить" 
+                    Margin="0 0 30 0" />
+            <Button x:Name="RefreshStation"
+                    Click="RefreshStation_Click"
+                    Content="Обновить" />
+        </StackPanel>
+
+        <DataGrid x:Name="StationsModel"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№"
+                                    Binding="{Binding StationId}"
+                                    Width="*" />
+                <DataGridTextColumn Header="Название остановки"
+                                    Binding="{Binding StationName}"
+                                    Width="*" />
+                <DataGridTextColumn Header="Местоположение остановки"
+                                    Binding="{Binding Location}"
+                                    Width="*" />
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="EditStation"
+                                    Click="EditStation_Click"
+                                    Content="Обновить данные" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
+
