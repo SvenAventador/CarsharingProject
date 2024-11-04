@@ -14,6 +14,8 @@ public partial class User
 
     public DateOnly RegistrationDate { get; set; }
 
+    public string Password { get; set; } = null!;
+
     public virtual ICollection<Feedback> Feedbacks { get; set; } = [];
 
     public virtual ICollection<RentalOrder> RentalOrders { get; set; } = [];

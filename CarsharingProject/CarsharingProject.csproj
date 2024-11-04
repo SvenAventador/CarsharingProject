@@ -9,6 +9,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\at.png" />
+    <None Remove="Images\ballpen.png" />
+    <None Remove="Images\calendar-month.png" />
+    <None Remove="Images\calendar.png" />
+    <None Remove="Images\car.png" />
+    <None Remove="Images\key-icon.png" />
+    <None Remove="Images\lock-open.png" />
+    <None Remove="Images\lock.png" />
+    <None Remove="Images\logo.png" />
+    <None Remove="Images\nullImage.png" />
+    <None Remove="Images\phone.png" />
+    <None Remove="Images\user.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignColors" Version="3.1.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -20,8 +37,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Windows\" />
-    <Folder Include="Pages\" />
+    <Resource Include="Images\at.png" />
+    <Resource Include="Images\ballpen.png" />
+    <Resource Include="Images\calendar-month.png" />
+    <Resource Include="Images\calendar.png" />
+    <Resource Include="Images\car.png" />
+    <Resource Include="Images\key-icon.png" />
+    <Resource Include="Images\lock-open.png" />
+    <Resource Include="Images\lock.png" />
+    <Resource Include="Images\logo.png" />
+    <Resource Include="Images\nullImage.png" />
+    <Resource Include="Images\phone.png" />
+    <Resource Include="Images\user.png" />
   </ItemGroup>
 
 </Project>

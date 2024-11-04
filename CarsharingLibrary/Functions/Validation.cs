@@ -4,16 +4,16 @@ using System.Text.RegularExpressions;
 
 namespace CarsharingLibrary.Functions
 {
-    public static partial class Validation
+    public static class Validation
     {
-        private static readonly Regex EmailRegex = EmailRegularExpressioin();
+        private static readonly Regex EmailRegex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.Compiled);
 
         public static bool ValidEmail(string email)
         {
             return EmailRegex.IsMatch(email);
         }
 
-        private static readonly Regex PhoneRegex = PhoneRegularExopression();
+        private static readonly Regex PhoneRegex = new Regex(@"^(\+7|8)[\s-]?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$", RegexOptions.Compiled);
 
         public static bool ValidPhone(string phone)
         {
@@ -26,12 +26,5 @@ namespace CarsharingLibrary.Functions
             var hashBytes = SHA256.HashData(bytes);
             return string.Concat(hashBytes.Select(b => b.ToString("x2")));
         }
-
-        [GeneratedRegex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.Compiled)]
-        private static partial Regex EmailRegularExpressioin();
-
-        [GeneratedRegex(@"^(\+7|8)[\s-]?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$", RegexOptions.Compiled)]
-        private static partial Regex PhoneRegularExopression();
     }
 }
-
