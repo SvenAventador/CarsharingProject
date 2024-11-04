@@ -1,0 +1,37 @@
+﻿<Page x:Class="CarsharingProject.Windows.Admin.Pages.Cars1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CarsharingProject.Windows.Admin.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Cars1">
+
+    <Grid>
+        <DataGrid x:Name="Cars" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="Уникальный номер" Binding="{Binding CarId}"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Header="Государственный номер" Binding="{Binding LicensePlate}"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Header="Модель" Binding="{Binding CarModelId}"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Header="Год выпуска" Binding="{Binding YearOfManufacture}"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Header="Цвет" Binding="{Binding Color}"></DataGridTextColumn>
+                <DataGridTextColumn  Width="*" Header="Пробег" Binding="{Binding Mileage}"></DataGridTextColumn>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="Edit" Click="Edit_Click">Изменить</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="Delete" Click="Delete_Click">Удалить</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

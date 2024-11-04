@@ -4,7 +4,7 @@ namespace CarsharingLibrary.Entities;
 
 public partial class CarsharingDbContext : DbContext
 {
-    private static readonly CarsharingDbContext? _context = new();
+    private readonly static CarsharingDbContext _context = new();
     public CarsharingDbContext()
     {
     }
@@ -14,7 +14,7 @@ public partial class CarsharingDbContext : DbContext
     {
     }
 
-    public static CarsharingDbContext GetContext() => _context ?? new CarsharingDbContext();
+    public static CarsharingDbContext GetContext() => _context ?? new();
 
     public virtual DbSet<Car> Cars { get; set; }
 
@@ -38,18 +38,18 @@ public partial class CarsharingDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server=(local);Database=CarsharingDB;Trusted_Connection=True;TrustServerCertificate=True;");
+        optionsBuilder.UseSqlServer("Server=DESKTOP-N5N34TL\\SQLEXPRESS;Database=CarsharingDB;Trusted_Connection=True;TrustServerCertificate=True;");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Car>(entity =>
         {
-            entity.HasKey(e => e.CarId).HasName("PK__Car__68A0342E7A4FA9A4");
+            entity.HasKey(e => e.CarId).HasName("PK__Car__68A0342EF32300B9");
 
             entity.ToTable("Car");
 
-            entity.HasIndex(e => e.LicensePlate, "UQ__Car__026BC15C43B0DBF2").IsUnique();
+            entity.HasIndex(e => e.LicensePlate, "UQ__Car__026BC15C6936FB4B").IsUnique();
 
             entity.Property(e => e.Color).HasMaxLength(50);
             entity.Property(e => e.LicensePlate).HasMaxLength(10);
@@ -62,7 +62,7 @@ public partial class CarsharingDbContext : DbContext
 
         modelBuilder.Entity<CarAvailability>(entity =>
         {
-            entity.HasKey(e => e.AvailabilityId).HasName("PK__CarAvail__DA3979B1CAFCF30C");
+            entity.HasKey(e => e.AvailabilityId).HasName("PK__CarAvail__DA3979B1FD98E80B");
 
             entity.ToTable("CarAvailability");
 
@@ -81,7 +81,7 @@ public partial class CarsharingDbContext : DbContext
 
         modelBuilder.Entity<CarCondition>(entity =>
         {
-            entity.HasKey(e => e.ConditionId).HasName("PK__CarCondi__37F5C0CF5B77FA79");
+            entity.HasKey(e => e.ConditionId).HasName("PK__CarCondi__37F5C0CF5F97AB8A");
 
             entity.ToTable("CarCondition");
 
@@ -95,7 +95,7 @@ public partial class CarsharingDbContext : DbContext
 
         modelBuilder.Entity<CarModel>(entity =>
         {
-            entity.HasKey(e => e.CarModelId).HasName("PK__CarModel__C585C08F8D43F602");
+            entity.HasKey(e => e.CarModelId).HasName("PK__CarModel__C585C08F1924C0A3");
 
             entity.ToTable("CarModel");
 
@@ -106,7 +106,7 @@ public partial class CarsharingDbContext : DbContext
 
         modelBuilder.Entity<Employee>(entity =>
         {
-            entity.HasKey(e => e.EmployeeId).HasName("PK__Employee__7AD04F11248F5D1A");
+            entity.HasKey(e => e.EmployeeId).HasName("PK__Employee__7AD04F1116732531");
 
             entity.ToTable("Employee");
 
@@ -116,7 +116,7 @@ public partial class CarsharingDbContext : DbContext
 
         modelBuilder.Entity<Feedback>(entity =>
         {
-            entity.HasKey(e => e.FeedbackId).HasName("PK__Feedback__6A4BEDD6DE95DC16");
+            entity.HasKey(e => e.FeedbackId).HasName("PK__Feedback__6A4BEDD68AEC5D4C");
 
             entity.ToTable("Feedback");
 
@@ -135,7 +135,7 @@ public partial class CarsharingDbContext : DbContext
 
         modelBuilder.Entity<Payment>(entity =>
         {
-            entity.HasKey(e => e.PaymentId).HasName("PK__Payment__9B556A3875837D0C");
+            entity.HasKey(e => e.PaymentId).HasName("PK__Payment__9B556A38C848C647");
 
             entity.ToTable("Payment");
 
@@ -151,7 +151,7 @@ public partial class CarsharingDbContext : DbContext
 
         modelBuilder.Entity<RentalOrder>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__RentalOr__C3905BCFB7ACECBD");
+            entity.HasKey(e => e.OrderId).HasName("PK__RentalOr__C3905BCF70F9733B");
 
             entity.ToTable("RentalOrder");
 
@@ -186,7 +186,7 @@ public partial class CarsharingDbContext : DbContext
 
         modelBuilder.Entity<Station>(entity =>
         {
-            entity.HasKey(e => e.StationId).HasName("PK__Station__E0D8A6BD7355361E");
+            entity.HasKey(e => e.StationId).HasName("PK__Station__E0D8A6BDEDC82B9C");
 
             entity.ToTable("Station");
 
@@ -196,17 +196,18 @@ public partial class CarsharingDbContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__User__1788CC4C05988D2B");
+            entity.HasKey(e => e.UserId).HasName("PK__User__1788CC4C2EC931E5");
 
             entity.ToTable("User");
 
-            entity.HasIndex(e => e.Phone, "UQ__User__5C7E359EA6568321").IsUnique();
+            entity.HasIndex(e => e.Phone, "UQ__User__5C7E359E71EAF8CA").IsUnique();
 
-            entity.HasIndex(e => e.Email, "UQ__User__A9D105341BC24933").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__User__A9D105341F669EF8").IsUnique();
 
             entity.Property(e => e.DriverLicense).HasMaxLength(20);
             entity.Property(e => e.Email).HasMaxLength(100);
             entity.Property(e => e.FullName).HasMaxLength(100);
+            entity.Property(e => e.Password).HasMaxLength(50);
             entity.Property(e => e.Phone).HasMaxLength(15);
         });
 
